@@ -211,7 +211,14 @@ function askManagerPrompts() {
 }
 
 function end () {
-  console.log('your team is complete! generating html file...')
+  console.log('Your team is complete!' + '\n' + 'Generating html file...')
+  fs.writeFile("team.html", render(team), function (err) {
+    if (err) {
+      console.log(err);
+    }
+    console.log("HTML successfully generated!")
+  })
+  
 }
 
 // After you have your html, you're now ready to create an HTML file using the HTML
