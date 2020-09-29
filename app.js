@@ -113,13 +113,14 @@ const managerPrompts = [
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
 
-
 // starts application
 function startQuestions() {
-  inquirer.prompt(questionPrompt).then(function (data) {
-      if (data.questionPrompt === true) {
+  inquirer
+    .prompt(questionPrompt)
+    .then(function (data) {
+      if (data.initQuestion === true) {
         console.log("will start questions!");
-        // memberType();
+        memberType();
       }
     })
     .catch((err) => {
@@ -127,24 +128,37 @@ function startQuestions() {
     });
 }
 
-// adds new team members 
-// function addToTeam () {
-//     inquirer.prompt(typeOfTeamMember).then(function (data) {
-//         if (data.newMember === true) {
-// memberType();
-//         } else {
-//             end();
-//         }
-//     }
-//     ).catch((err) => {
-//         console.log(err);
-//     }
-//     )
 
-// }
+
+//adds member to the team 
+function addToTeam () {
+    inquirer.prompt(newMember).then(function (data) {
+        if (data.newMember === true) {
+memberType();
+        } else {
+            end();
+        }
+    }
+    ).catch((err) => {
+        console.log(err);
+    }
+    )
+
+}
 
 //chooses type of team member
-// function memberType ()
+function memberType() {
+  inquirer
+    .prompt(typeOfTeamMember)
+    .then(function (data) {
+      if (data.memberType === "Engineer") {
+        console.log("engineer chosen");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
@@ -157,8 +171,8 @@ function startQuestions() {
 // employee type.
 
 function init() {
-    console.log("Follow the prompts to build your team!");
-    startQuestions();
+  console.log("Follow the prompts to build your team!");
+  startQuestions();
 }
 
 // HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
@@ -167,6 +181,5 @@ function init() {
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
 
-
-//FUNCTION CALLS 
+//FUNCTION CALLS
 init();
