@@ -144,13 +144,10 @@ function memberType() {
     .prompt(typeOfTeamMember)
     .then(function (data) {
       if (data.memberType === "Engineer") {
-        console.log("engineer chosen");
         askEngineerPrompts();
       } else if (data.memberType === "Intern") {
-        console.log("intern chosen");
         askInternPrompts();
       } else if (data.memberType === "Manager") {
-        console.log("manager chosen");
         askManagerPrompts();
       }
     })
@@ -163,10 +160,8 @@ function askEngineerPrompts() {
   inquirer
     .prompt(engineerPrompts)
     .then(function (data) {
-      console.log(data);
       var newEngineer = new Engineer(data.name, data.id, data.email, data.github);
       team.push(newEngineer);
-      console.log(team);
       addToTeam();
     })
     .catch((err) => {
@@ -178,10 +173,8 @@ function askInternPrompts() {
   inquirer
     .prompt(internPrompts)
     .then(function (data) {
-      console.log(data);
       var newIntern = new Intern(data.name, data.id, data.email, data.school);
       team.push(newIntern);
-      console.log(team);
       addToTeam();
     })
     .catch((err) => {
@@ -193,10 +186,8 @@ function askManagerPrompts() {
   inquirer
     .prompt(managerPrompts)
     .then(function (data) {
-      console.log(data);
       var newManager = new Manager(data.name, data.id, data.email, data.officeNumber);
       team.push(newManager);
-      console.log(team);
       addToTeam();
     })
     .catch((err) => {
@@ -206,7 +197,7 @@ function askManagerPrompts() {
 
 function end () {
   console.log('Generating html file...')
-  fs.writeFile("team.html", render(team), function (err) {
+  fs.writeFile(outputPath, render(team), function (err) {
     if (err) {
       console.log(err);
     }
