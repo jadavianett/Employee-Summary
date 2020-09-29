@@ -11,83 +11,112 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
+const team = [];
 console.log("Follow the prompts to build your team!");
-inquirer.prompt([
-  {
-    type: "input",
-    message: "What is your manager's name?",
-    name: "managerName"
-  },
-  {
-    type: "input",
-    message: "What is your manager's ID?",
-    name: "managerId"
-  },
-  {
-    type: "input",
-    message: "What is your manager's e-mail?",
-    name: "managerEmail"
-  },
-  {
-    type: "input",
-    message: "What is your manager's office number?",
-    name: "managerOfficeNumber"
-  },
-  {
+const questionPrompt = [
+    { 
+        type: "confirm",
+        message: "Would you like to enter a team member?",
+        name: "initQuestion",
+    }
+];
+const newMember = [
+    {
+       type: "confirm",
+       message: "Would you like to add another team member?",
+       name: "newMember" 
+    }
+];
+
+const typeOfTeamMember = [
+{ 
     type: "list",
     message: "Which member of your team would you like to add?",
-    choices: ["Engineer", "Intern", "I don't want to add any other members."],
-    name: "???"
-  },
-  {
-    type: "input",
-    message: "What is your engineer's name?",
-    name: "engineerName"
-  },
-  {
-    type: "input",
-    message: "What is your engineer's ID?",
-    name: "engineerId"
-  },
-  {
-    type: "input",
-    message: "What is your engineer's e-mail?",
-    name: "engineerEmail"
-  },
-  {
-    type: "input",
-    message: "What is your engineer's GitHub username?",
-    name: "engineerGitHubUserName"
-  },
+    choices: ["Engineer", "Intern", "Manager"],
+    name: "typeofTeamMember"
+}
+];
 
-  {
-    type: "list",
-    message: "Which member of your team would you like to add?",
-    choices: ["Engineer", "Intern", "I don't want to add any other members."],
-    name: "???"
-  },
-  {
-    type: "input",
-    message: "What is your intern's name?",
-    name: "internName"
-  },
-  {
-    type: "input",
-    message: "What is your intern's ID?",
-    name: "internId"
-  },
-  {
-    type: "input",
-    message: "What is your intern's e-mail?",
-    name: "internEmail"
-  },
-  {
-    type: "input",
-    message: "What is your intern's school?",
-    name: "internSchool"
-  },
+const engineerQuestions = [
+    {
+        type: "input",
+        message: "What is your engineer's name?",
+        name: "engineerName"
+      },
+      {
+        type: "input",
+        message: "What is your engineer's ID?",
+        name: "engineerId"
+      },
+      {
+        type: "input",
+        message: "What is your engineer's e-mail?",
+        name: "engineerEmail"
+      },
+      {
+        type: "input",
+        message: "What is your engineer's GitHub username?",
+        name: "engineerGitHubUserName"
+      },
+];
 
-]);
+// inquirer.prompt([
+//   {
+//     type: "input",
+//     message: "What is your manager's name?",
+//     name: "managerName"
+//   },
+//   {
+//     type: "input",
+//     message: "What is your manager's ID?",
+//     name: "managerId"
+//   },
+//   {
+//     type: "input",
+//     message: "What is your manager's e-mail?",
+//     name: "managerEmail"
+//   },
+//   {
+//     type: "input",
+//     message: "What is your manager's office number?",
+//     name: "managerOfficeNumber"
+//   },
+//   {
+//     type: "list",
+//     message: "Which member of your team would you like to add?",
+//     choices: ["Engineer", "Intern", "I don't want to add any other members."],
+//     name: "???"
+//   },
+  
+
+//   {
+//     type: "list",
+//     message: "Which member of your team would you like to add?",
+//     choices: ["Engineer", "Intern", "I don't want to add any other members."],
+//     name: "???"
+//   },
+//   {
+//     type: "input",
+//     message: "What is your intern's name?",
+//     name: "internName"
+//   },
+//   {
+//     type: "input",
+//     message: "What is your intern's ID?",
+//     name: "internId"
+//   },
+//   {
+//     type: "input",
+//     message: "What is your intern's e-mail?",
+//     name: "internEmail"
+//   },
+//   {
+//     type: "input",
+//     message: "What is your intern's school?",
+//     name: "internSchool"
+//   },
+
+// ]);
 
 // TODO, ASK QUESTION BASED ON SPECIFIC USER INPUT, IE, IF THEY SELECT ADD AN INTERN, ASK THEM INTERN QUESTIONS!
 // and to create objects for each team member (using the correct classes as blueprints!)
