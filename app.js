@@ -119,7 +119,7 @@ function startQuestions() {
     .prompt(questionPrompt)
     .then(function (data) {
       if (data.initQuestion === true) {
-        console.log("will start questions!");
+        // console.log("will start questions!");
         memberType();
       }
     })
@@ -128,22 +128,20 @@ function startQuestions() {
     });
 }
 
-
-
-//adds member to the team 
-function addToTeam () {
-    inquirer.prompt(newMember).then(function (data) {
-        if (data.newMember === true) {
-memberType();
-        } else {
-            end();
-        }
-    }
-    ).catch((err) => {
-        console.log(err);
-    }
-    )
-
+//adds member to the team
+function addToTeam() {
+  inquirer
+    .prompt(newMember)
+    .then(function (data) {
+      if (data.newMember === true) {
+        memberType();
+      } else {
+        end();
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 //chooses type of team member
@@ -153,6 +151,10 @@ function memberType() {
     .then(function (data) {
       if (data.memberType === "Engineer") {
         console.log("engineer chosen");
+      } else if (data.memberType === "Intern") {
+        console.log("intern chosen");
+      } else if (data.memberType === "manager") {
+        console.log("manager chosen");
       }
     })
     .catch((err) => {
