@@ -10,8 +10,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
-
-// creating an empty team array to store data 
+// creating an empty team array to store data
 const team = [];
 
 // initializes the application
@@ -169,7 +168,12 @@ function askEngineerPrompts() {
   inquirer
     .prompt(engineerPrompts)
     .then(function (data) {
-      var newEngineer = new Engineer(data.name, data.id, data.email, data.github);
+      var newEngineer = new Engineer(
+        data.name,
+        data.id,
+        data.email,
+        data.github
+      );
       team.push(newEngineer);
       addToTeam();
     })
@@ -197,7 +201,12 @@ function askManagerPrompts() {
   inquirer
     .prompt(managerPrompts)
     .then(function (data) {
-      var newManager = new Manager(data.name, data.id, data.email, data.officeNumber);
+      var newManager = new Manager(
+        data.name,
+        data.id,
+        data.email,
+        data.officeNumber
+      );
       team.push(newManager);
       addToTeam();
     })
@@ -207,15 +216,14 @@ function askManagerPrompts() {
 }
 
 //ends the application and generates the HTML file
-function end () {
-  console.log('Generating html file...')
+function end() {
+  console.log("Generating html file...");
   fs.writeFile(outputPath, render(team), function (err) {
     if (err) {
       console.log(err);
     }
-    console.log("HTML successfully generated!")
-  })
-  
+    console.log("HTML successfully generated!");
+  });
 }
 
 //starts the application
@@ -223,7 +231,6 @@ function init() {
   console.log("Follow the prompts to build your team!");
   startQuestions();
 }
-
 
 //FUNCTION CALLS
 init();
