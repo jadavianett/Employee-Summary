@@ -41,82 +41,71 @@ const engineerQuestions = [
     {
         type: "input",
         message: "What is your engineer's name?",
-        name: "engineerName"
+        name: "name"
       },
       {
         type: "input",
         message: "What is your engineer's ID?",
-        name: "engineerId"
+        name: "id"
       },
       {
         type: "input",
         message: "What is your engineer's e-mail?",
-        name: "engineerEmail"
+        name: "email"
       },
       {
         type: "input",
         message: "What is your engineer's GitHub username?",
-        name: "engineerGitHubUserName"
+        name: "github"
       },
 ];
 
-// inquirer.prompt([
-//   {
-//     type: "input",
-//     message: "What is your manager's name?",
-//     name: "managerName"
-//   },
-//   {
-//     type: "input",
-//     message: "What is your manager's ID?",
-//     name: "managerId"
-//   },
-//   {
-//     type: "input",
-//     message: "What is your manager's e-mail?",
-//     name: "managerEmail"
-//   },
-//   {
-//     type: "input",
-//     message: "What is your manager's office number?",
-//     name: "managerOfficeNumber"
-//   },
-//   {
-//     type: "list",
-//     message: "Which member of your team would you like to add?",
-//     choices: ["Engineer", "Intern", "I don't want to add any other members."],
-//     name: "???"
-//   },
-  
+const internQuestions = [
+    {
+        type: "input",
+        message: "What is your intern's name?",
+        name: "name"
+      },
+      {
+        type: "input",
+        message: "What is your intern's ID?",
+        name: "id"
+      },
+      {
+        type: "input",
+        message: "What is your intern's e-mail?",
+        name: "email"
+      },
+      {
+        type: "input",
+        message: "What is your intern's school?",
+        name: "school"
+      },
+];
 
-//   {
-//     type: "list",
-//     message: "Which member of your team would you like to add?",
-//     choices: ["Engineer", "Intern", "I don't want to add any other members."],
-//     name: "???"
-//   },
-//   {
-//     type: "input",
-//     message: "What is your intern's name?",
-//     name: "internName"
-//   },
-//   {
-//     type: "input",
-//     message: "What is your intern's ID?",
-//     name: "internId"
-//   },
-//   {
-//     type: "input",
-//     message: "What is your intern's e-mail?",
-//     name: "internEmail"
-//   },
-//   {
-//     type: "input",
-//     message: "What is your intern's school?",
-//     name: "internSchool"
-//   },
+const managerQuestions = [ 
+    {
+        type: "input",
+        message: "What is your manager's name?",
+        name: "name"
+      },
+      {
+        type: "input",
+        message: "What is your manager's ID?",
+        name: "id"
+      },
+      {
+        type: "input",
+        message: "What is your manager's e-mail?",
+        name: "email"
+      },
+      {
+        type: "input",
+        message: "What is your manager's office number?",
+        name: "officeNumber"
+      },
 
-// ]);
+];
 
 // TODO, ASK QUESTION BASED ON SPECIFIC USER INPUT, IE, IF THEY SELECT ADD AN INTERN, ASK THEM INTERN QUESTIONS!
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -124,6 +113,8 @@ const engineerQuestions = [
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
+
+
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
