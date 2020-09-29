@@ -151,16 +151,38 @@ function memberType() {
     .then(function (data) {
       if (data.memberType === "Engineer") {
         console.log("engineer chosen");
+        askEngineerPrompts();
       } else if (data.memberType === "Intern") {
         console.log("intern chosen");
+        askInternPrompts();
       } else if (data.memberType === "manager") {
         console.log("manager chosen");
+        askManagerPrompts();
       }
     })
     .catch((err) => {
       console.log(err);
     });
 }
+
+function askEngineerPrompts() {
+  inquirer
+    .prompt(engineerPrompts)
+    .then(function (data) {
+      console.log(data);
+      var newEngineer = new Engineer(data.name, data.id, data.email, data.github);
+      team.push(newEngineer);
+      console.log(team);
+      addToTeam();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function askInternPrompts() {}
+
+function askManagerPrompts() {}
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
