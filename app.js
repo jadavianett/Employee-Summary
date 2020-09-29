@@ -1,18 +1,20 @@
+//importing required files
+
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
 const render = require("./lib/htmlRenderer");
 
-// Write code to use inquirer to gather information about the development team members,
+
+// creating an empty team array to store data 
 const team = [];
 
+// initializes the application
 const questionPrompt = [
   {
     type: "confirm",
@@ -20,6 +22,8 @@ const questionPrompt = [
     name: "initQuestion",
   },
 ];
+
+// adds a new member
 const newMember = [
   {
     type: "confirm",
@@ -28,6 +32,7 @@ const newMember = [
   },
 ];
 
+//chooses the type of member added
 const typeOfTeamMember = [
   {
     type: "list",
@@ -37,6 +42,7 @@ const typeOfTeamMember = [
   },
 ];
 
+//prompts shown when engineer is chosen
 const engineerPrompts = [
   {
     type: "input",
@@ -60,6 +66,7 @@ const engineerPrompts = [
   },
 ];
 
+//prompts shown when intern is chosen
 const internPrompts = [
   {
     type: "input",
@@ -83,6 +90,7 @@ const internPrompts = [
   },
 ];
 
+//prompts shown when manager is chosen
 const managerPrompts = [
   {
     type: "input",
@@ -106,6 +114,7 @@ const managerPrompts = [
   },
 ];
 
+//FUNCTIONS
 
 // starts application
 function startQuestions() {
@@ -113,7 +122,6 @@ function startQuestions() {
     .prompt(questionPrompt)
     .then(function (data) {
       if (data.initQuestion === true) {
-        // console.log("will start questions!");
         memberType();
       }
     })
@@ -156,6 +164,7 @@ function memberType() {
     });
 }
 
+//asks engineer questions
 function askEngineerPrompts() {
   inquirer
     .prompt(engineerPrompts)
@@ -169,6 +178,7 @@ function askEngineerPrompts() {
     });
 }
 
+//asks intern questions
 function askInternPrompts() {
   inquirer
     .prompt(internPrompts)
@@ -182,6 +192,7 @@ function askInternPrompts() {
     });
 }
 
+//asks manager questions
 function askManagerPrompts() {
   inquirer
     .prompt(managerPrompts)
@@ -195,6 +206,7 @@ function askManagerPrompts() {
     });
 }
 
+//ends the application and generates the HTML file
 function end () {
   console.log('Generating html file...')
   fs.writeFile(outputPath, render(team), function (err) {
@@ -206,7 +218,7 @@ function end () {
   
 }
 
-
+//starts the application
 function init() {
   console.log("Follow the prompts to build your team!");
   startQuestions();
