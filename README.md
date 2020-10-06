@@ -4,6 +4,8 @@ Welcome to my Employee Generator application! This is an application that will a
 ## Usage 
 This application can be used to create a clean HTML page that will display manager, engineer, and intern information. Use the application in your command line by navigating to the application's location and initializing with the command 'node app.js'
 
+[Link to Video Walk through](https://drive.google.com/file/d/1hvPajoO8I58Ss4GjEg1dIg1IQsdS-eyo/view) 
+
 Once the application is initialized, follow the prompts to build your team! 
 ![alt text](./assets/images/appinterface.png "Application Interface")
 
